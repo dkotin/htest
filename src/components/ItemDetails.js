@@ -1,11 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/listItem.css'
+import { connect } from 'react-redux'
+import { applyPopulationFilter, fetchDetails, fetchPopulation } from '../actions'
 
 class ItemDetails extends React.PureComponent {
 
+  componentDidMount () {
+    const id = this.props.match.params.id
+    this.props.fetchDetails(id)
+  }
+
   render () {
     const { item } = this.props
+
+    if (item === undefined) {
+      this.props.history.replace('/not-found')
+      return null
+    }
+
+    if (!item) return null
 
     return (
       <div className="card mb-4 shadow-sm tenantCard" style={{ minWidth: 300, maxWidth: 300 }}>
@@ -35,5 +49,14 @@ class ItemDetails extends React.PureComponent {
   }
 
 }
+export default connect(
+  state => ({
+    item: state.person
+  }),
+  dispatch => ({
+    fetchDetails: (id) => dispatch(fetchDetails(id))
+  })
+)(ItemDetails)
 
-export default ItemDetails
+
+

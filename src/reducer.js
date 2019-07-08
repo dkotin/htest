@@ -1,7 +1,8 @@
-import { FETCH_POPULATION, FILTER_POPULATION} from './constants/actionTypes'
+import { FETCH_DETAILS, FETCH_POPULATION, FILTER_POPULATION } from './constants/actionTypes'
 
 const initialState = {
   population: [],
+  person: null,
   filteredPopulation: [],
   filter: ''
 }
@@ -10,6 +11,11 @@ export default function reducer (state = initialState, action) {
   switch (action.type) {
     case FETCH_POPULATION:
       return { ...state, population: action.population }
+    case FETCH_DETAILS:
+      return {
+        ...state,
+        person: action.population.find(item => item.id.toString() === action.id.toString())
+      }
     case FILTER_POPULATION:
       const filter = action.filter.trim().toLowerCase()
       return {
