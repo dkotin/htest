@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { applyMiddleware, createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -9,6 +8,7 @@ import {BrowserRouter} from 'react-router-dom'
 import { Provider } from 'react-redux'
 import "bootstrap/dist/css/bootstrap.css"
 import reducer from './reducer'
+import Routes from './Routes'
 
 const store = createStore(reducer,
   composeWithDevTools(
@@ -19,7 +19,7 @@ const store = createStore(reducer,
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App/>
+      <Routes/>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

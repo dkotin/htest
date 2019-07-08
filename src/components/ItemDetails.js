@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/listItem.css'
 
-class ListItem extends React.PureComponent {
+class ItemDetails extends React.PureComponent {
 
   render () {
     const { item } = this.props
@@ -36,4 +36,4 @@ class ListItem extends React.PureComponent {
 
 }
 
-export default ListItem
+export default ItemDetails

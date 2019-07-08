@@ -1,9 +1,0 @@
-.row > div[class*='col-'] {
-    display: flex;
-    flex:1 0 auto;
-}
-
-.tenantCard {
-    display: inline-block;
-    min-width: 300px;
-}
