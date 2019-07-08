@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { applyPopulationFilter, updateFilterValue } from '../actions'
+import { applyPopulationFilter} from '../actions'
 import { withRouter } from 'react-router'
 
 class Filter extends Component {
@@ -17,7 +17,10 @@ class Filter extends Component {
   }
 
   render () {
-    return <input type="text" name="filter" onChange={this.updateFilter} value={this.props.filter}/>
+    return <input
+      type="text" name="filter" onChange={this.updateFilter} value={this.props.filter}
+      placeholder="Filter"
+    />
   }
 
 }

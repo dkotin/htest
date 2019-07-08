@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import { Redirect, Route, Switch } from 'react-router'
 import List from './components/List'
 import ItemDetails from './components/ItemDetails'

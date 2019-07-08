@@ -22,7 +22,7 @@ export default function reducer (state = initialState, action) {
         ...state,
         filter: action.filter,
         filteredPopulation: state.population.filter(person => {
-          for (const [key, value] of Object.entries(person)) {
+          for (const value of Object.entries(person)) {
             if (Array.isArray(value)) {
               for (let i = 0; i < value.length; i++) {
                 if (value[i].toString().toLowerCase().includes(filter)) {
