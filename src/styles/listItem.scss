@@ -1,27 +1,26 @@
 .personPic {
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 9rem;
+  max-height: 9rem;
 }
 
 .personPicBig {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 27rem;
+  max-height: 27rem;
 }
 
 .detailsList {
-  padding-inline-start: 5px;
+  padding-inline-start: 1rem;
   display: inline;
   list-style: none;
-}
+  li {
+    display: inline;
+  }
+  li:after {
+    content: ", ";
+  }
 
-.detailsList li {
-  display: inline;
-}
+  li:last-child:after {
+    content: "";
+  }
 
-.detailsList li:after {
-  content: ", ";
-}
-
-.detailsList li:last-child:after {
-  content: "";
 }

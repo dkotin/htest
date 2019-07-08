@@ -15,14 +15,19 @@ class List extends Component {
   }
 
   render() {
-    const {population, filter} = this.props
+    const {population} = this.props
 
     return (
       <div>
-        <h1>Population of {CITY_NAME}</h1>
-        <h2>{filter}</h2>
+        <div className="container table-info">
+          <h1>Population of {CITY_NAME}</h1>
+        </div>
 
-        <Filter />
+        <div className="container">
+          <Filter />
+        </div>
+
+        <br />
 
         <div className="container">
           <div className="card-deck mb-3 text-center">
