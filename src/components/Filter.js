@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { applyPopulationFilter } from '../actions'
+import { applyPopulationFilter, updateFilterValue } from '../actions'
+import { withRouter } from 'react-router'
 
 class Filter extends Component {
-  updateFilter = (event) => (
-    //console.log(event.target.value)
-    this.props.applyPopulationFilter(event.target.value)
-  )
+  updateFilter = (event) => {
+    const filter = event.target.value
+    this.props.applyPopulationFilter(filter)
+
+    this.props.history.replace(`/?filter=${encodeURIComponent(filter)}`)
+  }
+
+  componentDidMount () {
+    const filter = new URLSearchParams(this.props.location.search).get('filter') || ''
+    this.props.applyPopulationFilter(filter)
+  }
 
   render () {
     return <input type="text" name="filter" onChange={this.updateFilter} value={this.props.filter}/>
@@ -14,9 +22,9 @@ class Filter extends Component {
 
 }
 
-export default connect(
-  (state, ownProps) => ({filter: state.filter || ''}),
+export default withRouter(connect(
+  state => ({filter: state.filter || ''}),
   dispatch => ({
     applyPopulationFilter: (filter) => dispatch(applyPopulationFilter(filter))
   })
-)(Filter)
+)(Filter))

@@ -1,4 +1,4 @@
-import { FETCH_POPULATION, FILTER_POPULATION } from './constants/actionTypes'
+import { FETCH_POPULATION, FILTER_POPULATION} from './constants/actionTypes'
 
 const initialState = {
   population: [],
@@ -14,7 +14,7 @@ export default function reducer (state = initialState, action) {
       const filter = action.filter.trim().toLowerCase()
       return {
         ...state,
-        filter: action.filter, // Avoid using filter constant here - its trimmed and lowercased
+        filter: action.filter,
         filteredPopulation: state.population.filter(person => {
           for (const [key, value] of Object.entries(person)) {
             if (Array.isArray(value)) {

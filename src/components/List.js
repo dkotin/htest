@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import { fetchPopulation } from '../actions'
+import { applyPopulationFilter, fetchPopulation} from '../actions'
 import ListItem from './ListItem'
 import Filter from './Filter'
 import { CITY_NAME } from '../constants/config'
 
 class List extends Component {
 
-  componentDidMount () {
-    this.props.fetchPopulation()
+  async componentDidMount () {
+    await this.props.fetchPopulation()
+
+    const filter = new URLSearchParams(this.props.location.search).get('filter') || ''
+    this.props.applyPopulationFilter(filter)
   }
 
   render() {
-    const {population, filteredPopulation, filter} = this.props
+    const {population, filter} = this.props
 
     return (
       <div>
@@ -23,31 +26,21 @@ class List extends Component {
 
         <div className="container">
           <div className="card-deck mb-3 text-center">
-          {/*<div className="card-deck">*/}
             {population.map((item) => <ListItem key={item.id} item={item}/>)}
           </div>
         </div>
-
-
-
-        <hr />
-
-
-
-        {/*{population && population.map((item) => <div>{item.name}</div>)}*/}
-
       </div>
     );
   }
 }
 
 export default connect(
-  (state, ownProps) => ({
+  state => ({
     population: state.filter.trim().length > 0 ? state.filteredPopulation: state.population,
-    filteredPopulation: state.filteredPopulation,
     filter: state.filter
   }),
   dispatch => ({
-    fetchPopulation: () => dispatch(fetchPopulation())
+    fetchPopulation: () => dispatch(fetchPopulation()),
+    applyPopulationFilter: (filter) => dispatch(applyPopulationFilter(filter))
   })
 )(List)
