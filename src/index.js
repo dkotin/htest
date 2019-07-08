@@ -8,13 +8,7 @@ import thunk from 'redux-thunk'
 import {BrowserRouter} from 'react-router-dom'
 import { Provider } from 'react-redux'
 import "bootstrap/dist/css/bootstrap.css"
-
-const initialState = {}
-
-const reducer = function(state = initialState, action) {
-  return state
-}
-
+import reducer from './reducer'
 
 const store = createStore(reducer,
   composeWithDevTools(
