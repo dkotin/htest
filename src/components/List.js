@@ -9,23 +9,16 @@ import '../styles/styles.scss'
 
 class List extends Component {
 
-  state = {
-    filter: ''
-  }
-
   async componentDidMount () {
     const urlParams = new URLSearchParams(this.props.location.search)
     const filter = urlParams.get('filter') || ''
 
     await this.props.fetchPopulation()
-
-    this.setState({ filter })
-
     this.props.applyPopulationFilter(filter)
   }
 
   handlePageClick = (page) => {
-    const { filter } = this.state
+    const { filter } = this.props
     this.props.applyPopulationFilter(filter, page.selected + 1)
   }
 
@@ -42,7 +35,7 @@ class List extends Component {
           <Filter/>
           <br/>
           <nav aria-label="Page navigation example">
-            <ReactPaginate
+            {pagesCount > 1 && <ReactPaginate
               className="pagination"
               pageCount={pagesCount}
               pageRangeDisplayed={2}
@@ -56,7 +49,7 @@ class List extends Component {
               pageClassName="page-item"
               pageLinkClassName="page-link"
               breakClassName="page-item"
-            />
+            />}
           </nav>
         </div>
         <br/>
