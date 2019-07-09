@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/listItem.scss'
+import '../styles/styles.scss'
 
 class ListItem extends React.PureComponent {
 

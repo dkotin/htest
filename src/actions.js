@@ -22,9 +22,10 @@ export const fetchDetails = (id) => async (dispatch) => {
   })
 }
 
-export const applyPopulationFilter = (filter) => async (dispatch) => {
+export const applyPopulationFilter = (filter, page = 1) => async (dispatch) => {
   return dispatch({
     type: FILTER_POPULATION,
-    filter
+    filter,
+    page
   })
 }
