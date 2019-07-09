@@ -65,7 +65,6 @@ class List extends Component {
 
 export default connect(
   state => ({
-    //population: state.filter.trim().length > 0 ? state.filteredPopulation: state.population,
     population: state.filteredPopulation,
     filter: state.filter,
     pagesCount: state.pagesCount

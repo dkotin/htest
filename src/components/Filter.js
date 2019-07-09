@@ -32,7 +32,6 @@ class Filter extends Component {
       </div>
     )
   }
-
 }
 
 export default withRouter(connect(
