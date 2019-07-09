@@ -1,11 +1,17 @@
 # Test Application
 
+##
+Demo available here: https://confident-stallman-5b4552.netlify.com/
+
 ## Technologies / architecture overview
-The app uses a standard webpack and scss according with the best practices 
+The app uses a standard webpack and scss according to the best practices 
 recomended by react core developers thus created and configured with 
 the create-react-app utility.
 Yarn is used as a faster and more reliable package manager in favour to npm.
 Jest is a default testing tool for the setup and provides enough power and flexibility.
+To improve the look and feel, the Bootstrap used as a visualisation helping library.
+Redux is used for the data storing / manipulating - this provides an easier way of react
+components interaction.
 
 
 ## Available Scripts

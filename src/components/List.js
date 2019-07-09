@@ -31,6 +31,7 @@ class List extends Component {
 
   render () {
     const { population, pagesCount } = this.props
+    if (population.count === 0) return null
     return (
       <div>
         <div className="container table-info">
